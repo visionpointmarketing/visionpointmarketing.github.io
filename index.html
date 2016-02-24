@@ -112,7 +112,24 @@
 	&lt;/tbody&gt;
 &lt;/table&gt;</pre>
 		</div>
-
+		<div id="accessibilityDegradation" class="entry">
+			<h3>Aggressive Degradation</h3>
+			<p>It's worth noting that this is a personal opinion, and best suited to very specific situations. The stance of aggressive degradation will not be well received in large commercial projects or enterprise solutions relying upon older browsers.</p>
+			<p>Aggressive degradation dictates that if a particular (older) browser cannot render a certain effect, it should simply be omitted. A CSS3 button is a good example. 
+				Effects such as <code>border-radius</code>, <code>box-shadow</code>, <code>text-shadow</code> and <code>gradients</code> will be displayed in cutting edge browsers.
+				A graceful fallback of a <code>.PNG</code> would be provided for slightly older browsers, and the most graceful of all solutions would include a PNG-Fix for IE6 or the use of <code>filter</code> arguments to replicate gradients and shadows.
+				However, aggressive degradation in this situation instructs you to neglect the older browsers and present them with a flat, satisfactory object.</p>
+			<p>Put simply, aggressive degradation boils down to: <strong>if your browser can't render a gradient or a box shadow, tough luck</strong>.</p>
+			<p>While not ideal for every situation, it ensures the timely delivery of projects and that the root product is still usable and not reliant on (validation breaking) hacks.</p>
+			<h3>Degradation</h3>
+			<p>Thankfully browser handling of unsupported HTML5 and CSS3 is already that of a graceful nature. New additions to the list of <code>&lt;input /&gt;</code> types such as "email", "search" etc. will generally
+				degrade to normal <code>&lt;input type="text" /&gt;</code> when not natively supported. Similarly, CSS3 properties that aren't supported will simply not appear. Responsive layouts controlled by height and width
+				media queries are simply not applied. </p>
+			<p><strong>
+					Subtle CSS3 effects should be employed as a reward for users who run a modern browser.
+				</strong></p>
+			<p>The resources section below includes a few libraries to help normalise HTML5 and CSS3 functionality across a range of older browsers.</p>
+		</div>
 		<h2 id="javascriptSection">JavaScript</h2>
 		<div id="javascriptWhitespace" class="entry">
 			<h3>Whitespacing &amp; Formatting</h3>
@@ -271,7 +288,7 @@ greet({
 });</pre>
 		</div>
 		<div id="javascriptBooleanNaming" class="entry">
-			<h3>CanIHaz Boolean?</h3>
+			<h3>Boolean variables</h3>
 			<p>Booleans should be easily identifiable by the way they are named. Use prefixes like <code>is</code>, <code>can</code> or <code>has</code> to propose a question.</p>
 			<pre class="prettyprint">
 isEditing = true;
@@ -307,7 +324,7 @@ document.getElementById(&quot;myList&quot;).innerHTML = constructedHTML; //reflo
 			<p>In this scenario, the elements are being constructed within a string. Not a single reflow is created by the loop, as the DOM is not being altered. Only once the array has been completely looped through is the string then applied as the <code>innerHTML</code> of an object, causing the only reflow of the function.</p>
 		</div>
 		<div id="javascriptFeatureSniff" class="entry">
-			<h3>Feature Sniff, Don't Browser Sniff</h3>
+			<h3>Modernizr</h3>
 			<p>Does the client's browser support geolocation? Does the client's browser support web workers? HTML5 video? HTML5 audio? The answer used to be:</p>
 			<pre class="prettyprint">
 if ($.browser.msie) {
@@ -326,38 +343,67 @@ if (Modernizr.canvas) { ... }</pre>
 		</div>
 		<h2 id="jquerySection">jQuery Specific</h2>
 		<div id="jqueryChain" class="entry">
-			<h3>Chain Like a Mad Dog</h3>
+			<h3>Chaining</h3>
 			<p>One of the best parts of jQuery is its function chaining. You've probably used it a bit, maybe a few simple calls one after another... but have you ever traversed the DOM like a mad dog? Take some time to familiarise yourself with the <a href="http://api.jquery.com/end/" target="_blank">.end()</a> function. It is critical for when you begin stepping up and down the DOM tree from your original selector.</p>
 			<pre class="prettyprint">
 $(".quote")
 	.hide()
-	.find("a").text("Click here").bind("click",doStuff).end()
+	.find("a").text("Click here").on("click",doStuff).end()
 	.parent().removeClass().addClass("testimonial").draggable().end()
 	.fadeIn("slow");</pre>
 			<p>In the example above, the <a href="http://api.jquery.com/end/" target="_blank">.end()</a> function is used once we have finished doing things with a particular DOM object and want to traverse
 			back up the DOM to the original object we called. We then load back up and dive back into the DOM.</p>
 		</div>
+		<div id="jqueryWork" class="entry">
+			<h3>Don't let jQuery do the work</h3>
+			<p>Where possible, let CSS do the work. For example, check out this button:</p>
+
+			<pre class="prettyprint">
+&lt;button class=&quot;quote&quot; href=&quot;#&quot;&gt;Click me&lt;/button&gt;
+&lt;div&gt;content and stuff&lt;/div&gt;</pre>
+			<p>Instead of hiding/showing elements via jQuery like this:</p>
+			<pre class="prettyprint">
+$(".quote").on("click", function(e){
+	$(this).next('div').toggle();
+});</pre>
+			<p>Do this:</p>
+			<pre class="prettyprint">
+$(document).ready(function(){
+	$(".quote").addClass('closed');
+	$(".quote").on("click", function(e){
+		$(this).toggleClass('closed');
+	});
+});
+</pre>
+			<pre class="prettyprint lang-css">
+.quote + div{
+	display:block;
+}
+.quote.closed + div{
+	display:none;
+}</pre>
+			<p>Also note that we're starting with the button visible and initially hiding it through javascript by adding the closed class. If we rely on javascript to make content accessible, we run into risks that the user will have javascript disabled, which leads to inaccessible content.</p>
+		</div>
 
 		<div id="jqueryOptimiseSelectors" class="entry">
 			<h3>Optimise Your Selectors</h3>
-			<p>jQuery is pretty chill. It can do pretty much everything but make you coffee, and I hear that's in the roadmap for 2.0. One thing you have to be careful about is abusing the power that is the <a href="http://sizzlejs.com/" target="_blank">sizzleJS</a> selector engine.
-				There are two strategies to overcome this: <em>caching the selector results</em> and <em>using efficient selectors</em>.</p>
+			<p>One great way to improve performance is to reduce the number of queries you make to the DOM. This can be done by <em>caching the selector results</em> and <em>using efficient selectors</em>.</p>
 			<h4>Caching Selector Results</h4>
 			<p>Do a costly DOM query every time you want to change something, or store a reference to the element? Pretty clear choice.</p>
 			<pre class="prettyprint">
 // before
-$(".quote a").bind("click", doStuff); // DOM query eww
+$(".quote a").on("click", doStuff); // DOM query 1
 
 // now
-$(".quote a").addClass("quoteLink"); // DOM query eww
+$(".quote a").addClass("quoteLink"); // DOM query 2
 
 // later
-$(".quote a").fadeIn("slow"); // DOM query eww</pre>
+$(".quote a").fadeIn("slow"); // DOM query 3</pre>
 			<p>Ignoring chaining, this is better:</p>
 			<pre class="prettyprint">
 // before
 var $quoteLinks = $(".quote a");  // the only DOM query
-$quoteLinks.bind("click", doStuff);
+$quoteLinks.on("click", doStuff);
 
 // now
 $quoteLinks.addClass("quoteLink");
@@ -387,7 +433,6 @@ $(".foo",bar); </pre>
 			</ul>
 		</div>
 		<h2 id="scssSection">SCSS</h2>
-<!------------------------------------------------------------------------------------------------------------------------------------------------>
 		<div id="scssDefinition" class="entry">
 			<h3>What SCSS is</h3>
 			<p>SCSS gives us power to compartmentalize our styling rules so we can easily cut out unused sections, just by deleting a file. It also lets us condense static values into variables, giving us an easier path to maintenance or updates. Mixins can add extra functionality, giving us a way to add vendor prefixes or calculate values on the fly.</p>
@@ -427,6 +472,32 @@ $(".foo",bar); </pre>
 }
 .selector .child{
 	position:absolute;
+}</pre>
+		</div>
+		<div id="scssCommenting" class="entry">
+			<h3>Commenting Blocks</h3>
+			<p>Commenting within SCSS will help us determine what partial the source resides within so we can have an easier time finding it to make updates.</p>
+			<pre class="prettyprint lang-css">
+/* HORIZONTAL NAV */
+#horizNav {
+	width: 100%;
+	display: block;
+	ul {
+		display: none;
+		position: absolute;
+		top: 30;
+		left: 0;
+		li{
+			display: block;
+			float: left; 
+			position: relative;
+			a {
+				display: block;
+				height: 30px;
+				text-decoration: none;
+			}
+		}
+	}
 }</pre>
 		</div>
 		<h2 id="cssSection">CSS</h2>
@@ -562,23 +633,7 @@ padding: 0px 10px;</pre>
 /* GOOD */
 padding: 0 10px;</pre>
 		</div>
-		<div id="cssCommenting" class="entry">
-			<h3>Commenting Blocks</h3>
-			<p>Commenting large blocks of CSS is a great way of keeping track of multiple style areas within the one stylesheet. 
-				Obviously it works better with single line CSS styles, but the effect is not entirely lost on multi-line either.
-				The use of dashes versus equals versus underscores are all up the individual, but this is how I like to manage my stylesheets.</p>
-			<pre class="prettyprint lang-css">
-/* === HORIZONTAL NAV === */
-#horizNav { width: 100%; display: block; }
-#horizNav li { display: block; float: left; position: relative; }
-#horizNav li a { display: block; height: 30px; text-decoration: none; }
-#horizNav li ul { display: none; position: absolute; top: 30; left: 0; }
 
-/* === HOME PAGE - CAROUSEL === */
-#carousel { width: 960px; height: 150px; position: relative; }
-#carousel img { display: none; }
-#carousel .buttons { position: absolute; right: 10px; bottom: 10px; }</pre>
-		</div>
 		<div id="cssClearingFloats" class="entry">
 			<h3>Clearing Floats</h3>
 			<p>Clearing a <code>&lt;div&gt;</code> used to mean extra DOM, because it involved adding an extra clearer element. The better way is to set a specific width on the parent element ("auto" doesn't work in all browsers and scenarios) and an overflow value of either "auto" or "hidden". 
@@ -633,24 +688,7 @@ padding: 0 10px;</pre>
 	line-height: 32px;
 }</pre>
 		</div>
-		<div id="cssFeatureSniff" class="entry">
-			<h3>Feature Sniff, Don't Browser Sniff</h3>
-			<p>In the earlier discusison of JavaScript feature detection, applying properties if a browser is <em>any version</em> of IE is increasingly problematic.
-				Man-of-steel Paul Irish pioneered the use of  <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank">IE version sniffing</a> to address this problem, but <a href="http://www.modernizr.com" target="_blank">Modernizr</a> has since come to the rescue.
-				Modernizr places classes on the root <code>&lt;html&gt;</code> element specifying whether features are supported. Bleeding edge styles can then easily cascade from (or be removed from) these classes.</p>
-			<pre class="prettyprint lang-css">
-.my_elem {
-   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-   box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-}
 
-/* when box shadow isn't supported, use borders instead */
-.no-boxshadow .my_elem {
-   border: 1px solid #666;
-   border-bottom-width: 2px;
-}</pre>
-		</div>
 		<div id="cssImportant" class="entry">
 			<h3>You're Not !important</h3>
 			<p>A reliance upon the <code>!important</code> tag is a dangerous thing. The cases that warrant its use are rare and specific. They revolve around the necessity to override another stylesheet which you do not have access or permission to edit.
@@ -662,22 +700,8 @@ p { font-size: 12px; }
 p.bio { font-size: 14px; }</pre>
 			<p><a href="http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/" target="_blank">Their article</a> on style precedence does a better job explaining inheritence than I ever could, so please give it a go.</p>
 		</div>
-		<div id="cssDegradation" class="entry">
-			<h3>Aggressive Degradation</h3>
-			<p>It's worth noting that this is a personal opinion, and best suited to very specific situations. The stance of aggressive degradation will not be well received in large commercial projects or enterprise solutions relying upon older browsers.</p>
-			<p>Aggressive degradation dictates that if a particular (older) browser cannot render a certain effect, it should simply be omitted. A CSS3 button is a good example. 
-				Effects such as <code>border-radius</code>, <code>box-shadow</code>, <code>text-shadow</code> and <code>gradients</code> will be displayed in cutting edge browsers.
-				A graceful fallback of a <code>.PNG</code> would be provided for slightly older browsers, and the most graceful of all solutions would include a PNG-Fix for IE6 or the use of <code>filter</code> arguments to replicate gradients and shadows.
-				However, aggressive degradation in this situation instructs you to neglect the older browsers and present them with a flat, satisfactory object.</p>
-			<p>Put simply, aggressive degradation boils down to: <strong>if your browser can't render a gradient or a box shadow, tough luck</strong>.</p>
-			<p>While not ideal for every situation, it ensures the timely delivery of projects and that the root product is still usable and not reliant on (validation breaking) hacks.</p>
-		</div>
 
 		<h2 id="cssHtmlSection">CSS3 &amp; HTML5</h2>
-		<div id="cssHtmlFeatureSniff" class="entry">
-			<h3>Feature Sniff with Modernizr</h3>
-			<p>I think I've gone on enough about this already. Use <a href="http://www.modernizr.com" target="_blank">Modernizr</a> to detect the availability of specific HTML5 and CSS3 features.</p>
-		</div>
 		<div id="cssHtmlFontFace" class="entry">
 			<h3>@font-face Use and Abuse</h3>
 			<p>Before you consider embedding a custom font, is important that you inspect the <abbr>EULA</abbr> and check if web embedding is allowed. Foundries are understandably reluctant to allow designers and developers
@@ -685,17 +709,6 @@ p.bio { font-size: 14px; }</pre>
 			<p>If, after careful consideration, you believe the desired font is web embeddable: head on over to the Font Squirrel <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank">@font-face Generator</a>. 
 				It utilises Fontspring's <a href="http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax" target="_blank">bulletproof @font-face structure</a> and automatically generates all the required file formats.</p>
 		</div>
-		<div id="cssHtmlDegradation" class="entry">
-			<h3>Degradation</h3>
-			<p>Thankfully browser handling of unsupported HTML5 and CSS3 is already that of a graceful nature. New additions to the list of <code>&lt;input /&gt;</code> types such as "email", "search" etc. will generally
-				degrade to normal <code>&lt;input type="text" /&gt;</code> when not natively supported. Similarly, CSS3 properties that aren't supported will simply not appear. Responsive layouts controlled by height and width
-				media queries are simply not applied. </p>
-			<p><strong>
-					Subtle CSS3 effects should be employed as a reward for users who run a modern browser.
-				</strong></p>
-			<p>The resources section below includes a few libraries to help normalise HTML5 and CSS3 functionality across a range of older browsers.</p>
-		</div>
-	
 		<h2 id="resourcesSection">Resources</h2>
 		<div id="resourcesSupport" class="entry">
 			<h3>Useful Resources</h3>
@@ -731,29 +744,29 @@ p.bio { font-size: 14px; }</pre>
 					font embedding for all!
 				</li>
 				<li>
-					<a href="http://www.raphaeljs.com" target="_blank">
-						RaphaelJS
+					<a href="https://http://caniuse.com/" target="_blank">
+						Can I use ...
 					</a>
-					 easy cross browser vector drawing
+					lists browser support for features
 				</li>
 				<li>
-					<a href="http://html5boilerplate.com/" target="_blank">
-						HTML5 Boilerplate
+					<a href="http://www.colorzilla.com/gradient-editor/" target="_blank">
+						Colorzilla Gradient Generator
 					</a>
-					a good starting point for any project. Even the "stripped" version is still a bit bloated.
-				</li>
-				<li>
-					<a href="http://twitter.github.com/bootstrap/" target="_blank">
-						Twitter Bootstrap
-					</a>
-					allows you to rapidly prototype and style simple web apps.
+					Create gradients cross browser support
 				</li>
 			</ul>
 		</div>
-		<div id="resourcesSuggestions" class="entry">
-			<h3>Support and Suggestions</h3>
-			<p>This document was prepared by Tait Brown (<a href="http://www.twitter.com/taitems" target="_blank">@taitems</a>).</p>
-			<p>Questions, corrections and suggestions can be lodged on the <a href="https://github.com/taitems/Front-End-Development-Guidelines/" target="_blank">GitHub repository</a> for this page. You can also fork your own branch and add your own company/product specific guidelines.</p>
+		<div id="resourcesSupportSoftware" class="entry">
+			<h3>Software</h3>
+			<ul>
+				<li>
+					<a href="http://www.ninite.com" target="_blank">
+						Ninite
+					</a>
+					Software installer/updater
+				</li>
+			</ul>
 		</div>
 	
 	</div>
