@@ -340,13 +340,16 @@
 		</div>
 		<div id="cssCentering" class="entry">
 			<h3>Vertical &amp; Horizontal Centering</h3>
-			<p>Centering elements horizontally is not exactly rocket science, and I'm sure most of you are familiar with the following snippet:</p>
+			<p>The following common snippet centers horizontally:</p>
 			<pre class="prettyprint lang-css">.class {</br>&#9;width: 960px;</br>&#9;margin: 0 auto;</br>}</pre>
-			<p>Front end devs have been using this snippet for a long time, without fully understanding why it didn't work vertically. From my understanding, it's important to remember that the parent element will generally have a <code>height: auto;</code> on it, and that there is no 100% height in which to vertically center the element. Applying the <code>position: absolute;</code> effectively moves the element out into position mode and responds to the pushing and pulling of auto margins and no specific location. </p>
+			<p>Front end devs have been centering elements using this snippet for a long time, without fully understanding why it didn't work vertically. From my understanding, it's important to remember that the parent element will generally have a <code>height: auto;</code> on it, and that there is no 100% height in which to vertically center the element. Applying the <code>position: absolute;</code> effectively moves the element out into position mode and responds to the pushing and pulling of auto margins and no specific location. </p>
 			<pre class="prettyprint lang-css">.exactMiddle {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;position: absolute;</br>&#9;top: 0;</br>&#9;right: 0;</br>&#9;bottom: 0;</br>&#9;left: 0;</br>&#9;margin: auto;</br>}</pre>
-			<p>The downsides of this method include its lack of support in IE6 and IE7, and the absence of a scroll bar if the browser is resized to be smaller than the centered object. There are more methods on <a href="http://blog.themeforest.net/tutorials/vertical-centering-with-css/" target="_blank">this page</a> (this is Method 4), but this is by far the best.</p> 
+			<p>The downsides of this method include its lack of support in IE6 and IE7, and the absence of a scroll bar if the browser is resized to be smaller than the centered object.</p> 
 			<p>The vertical centering of text in an element is also straightforward. If the text is on a single line, like a horizontal navigation item, you can set the <code>line-height</code> to be that of the element's physical height.</p> 
 			<pre class="prettyprint lang-css">#horizNav li {</br>&#9;height: 32px;</br>&#9;line-height: 32px;</br>}</pre>
+			<p>If the text can wrap to multiple lines or line height is needed for another purpose, vertical alignment can be done by styling the centered elements with table and table-cell properties.</p>
+			<pre class="prettyprint lang-css">.parent{</br>&#9;display:table;</br>&#9;.child{</br>&#9;&#9;display:table-cell;</br>&#9;&#9;text-align:middle;</br>&#9;&#9;height:100px;</br>&#9;}</br>}</pre>
+			<p>Here is a <a target="_blank" href="http://codepen.io/franchert/pen/EKYadZ">codepen</a> further illustrating the idea</p>
 		</div>
 		<div id="cssImportant" class="entry">
 			<h3>You're Not !important</h3>
