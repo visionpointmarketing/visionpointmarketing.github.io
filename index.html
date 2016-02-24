@@ -35,21 +35,17 @@
 	<div class="container">
 		<h2>NOTICE</h2>
 		<p>These guidelines are a copy from an external source and have not yet been updated to reflect accurate front-end guidelines at VisionPoint Marketing.</p>
-		<h2 id="accessiblitySection">Accessibility</h2>
+	<h2 id="accessiblitySection">Accessibility</h2>
 		<div id="accessibilityDoctype" class="entry">
 			<h3>DOCTYPE</h3>
 			<p>The following HTML5 DOCTYPE should always be used:</p>
-			<pre class="prettyprint">
-&lt;!DOCTYPE html&gt;
-			</pre>
+			<pre class="prettyprint">&lt;!DOCTYPE html&gt;</pre>
 		</div>
 		<div id="accessibilitySemanticMarkup" class="entry">
 			<h3>Write Valid Semantic Markup</h3>
 			<p>Each page should have exactly 1 <code>&lt;h1&gt;</code> tag pair</p>
 			<p>Semantic markup not only gives the human user of the site a better idea of hierarchy of content, but it also gives any machines attempting to ascertain importance or order from the content a better idea.</p>
-			<pre class="prettyprint">
-&lt;h2&gt;A Heading&lt;/h2&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet. ...&lt;/p&gt;</pre>
+			<pre class="prettyprint">&lt;h2&gt;A Heading&lt;/h2&gt;</br>&lt;p&gt;Lorem ipsum dolor sit amet. ...&lt;/p&gt;</pre>
 		</div>
 		<div id="accessibilityAria" class="entry">
 			<h3>Accessible Rich Internet Applications (ARIA)</h3>
@@ -64,53 +60,23 @@
 			</ul>
 			<p>As of this writing, we typically focus on using aria-label, role and aria-hidden where applicable</p>
 			<p>More notes can be found here on <a href="http://w3c.github.io/aria-in-html/">using aria in html</a></p>
-			<!--pre class="prettyprint">
-&lt;span class=&quot;tel&quot;&gt;
-&#9;&lt;span class=&quot;type&quot;&gt;home&lt;/span&gt;:
-&#9;&lt;span class=&quot;value&quot;&gt;+1.415.555.1212&lt;/span&gt;
-&lt;/span&gt;
-			</pre-->
 		</div>
 		<div id="accessibilityAnchors" class="entry">
 			<h3>Anchors</h3>
 			<p>Anchor tags provide a way to navigate on-page as well as between two pages. They shouldn't be used as clickable elements unless they actually take you somewhere else. A good way to determine whether to use an anchor or span is to imagine viewing the page with javascript turned off. How does the element behave?</p>
-			<pre class="prettyprint">
-&lt;a href=&quot;#onpagenav&quot;&gt;&lt;/a&gt;</pre>
+			<pre class="prettyprint">&lt;a href=&quot;#onpagenav&quot;&gt;&lt;/a&gt;</pre>
 		</div>
-
 		<div id="accessibilityAltText" class="entry">
 			<h3>Images Need &lsquo;Alt&rsquo; Text</h3>
 			<p>The <code>&lt;img&gt;</code> tag requires an <code>alt</code> text attribute to both validate and meet accessibility guidelines. The text in the <code>alt</code> attribute should be descriptive of what the image shows, or is trying to achieve.</p>
-			<pre class="prettyprint">
-&lt;img src=&quot;dog.gif&quot; alt=&quot;Fido and I at the park!&quot; /&gt; 
-&lt;!-- good, descriptive --&gt;
-
-&lt;img src=&quot;bullet.gif&quot; alt=&quot;bullet&quot; /&gt;
-&lt;!-- not good, needs an actual description! --&gt;</pre>
+			<pre class="prettyprint">&lt;img src=&quot;dog.gif&quot; alt=&quot;Fido and I at the park!&quot; /&gt;</br>&lt;!-- good, descriptive --&gt;</br></br>&lt;img src=&quot;bullet.gif&quot; alt=&quot;bullet&quot; /&gt;</br>&lt;!-- not good, needs an actual description! --&gt;</pre>
 			<p>When developing with sample content, this alt text is still required, but making it descriptive isn't as important.</p>
 		</div>
-
 		<div id="accessibilityTables" class="entry">
 			<h3>Use Tables for Tabular Data Only</h3>
 			<p>Tables should only ever be used for the presentation of tabular data.</p>
 			<p>When needed, table headers should always be presented using <code>&lt;th&gt;</code> elements. Remember to also set <code>cellpadding</code>, <code>cellspacing</code> and <code>border</code> values to <code>0</code> as these are more consistently controlled by CSS.</p>
-			<pre class="prettyprint">
-&lt;table cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; border=&#39;0&#39;&gt;
-	&lt;thead&gt;
-		&lt;tr&gt;
-			&lt;th&gt;Cell Header&lt;/th&gt;
-			&lt;th&gt;Cell Header&lt;/th&gt;
-			&lt;th&gt;Cell Header&lt;/th&gt;
-		&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-		&lt;tr&gt;
-			&lt;td&gt;Cell Item&lt;/td&gt;
-			&lt;td&gt;Cell Item&lt;/td&gt;
-			&lt;td&gt;Cell Item&lt;/td&gt;
-		&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;</pre>
+			<pre class="prettyprint">&lt;table cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; border=&#39;0&#39;&gt;</br>&#9;&lt;thead&gt;</br>&#9;&#9;&lt;tr&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&lt;/tr&gt;</br>&#9;&lt;/thead&gt;</br>&#9;&lt;tbody&gt;</br>&#9;&#9;&lt;tr&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&lt;/tr&gt;</br>&#9;&lt;/tbody&gt;</br>&lt;/table&gt;</pre>
 		</div>
 		<div id="accessibilityDegradation" class="entry">
 			<h3>Aggressive Degradation</h3>
@@ -121,7 +87,6 @@
 				However, aggressive degradation in this situation instructs you to neglect the older browsers and present them with a flat, satisfactory object.</p>
 			<p>Put simply, aggressive degradation boils down to: <strong>if your browser can't render a gradient or a box shadow, tough luck</strong>.</p>
 			<p>While not ideal for every situation, it ensures the timely delivery of projects and that the root product is still usable and not reliant on (validation breaking) hacks.</p>
-			<h3>Degradation</h3>
 			<p>Thankfully browser handling of unsupported HTML5 and CSS3 is already that of a graceful nature. New additions to the list of <code>&lt;input /&gt;</code> types such as "email", "search" etc. will generally
 				degrade to normal <code>&lt;input type="text" /&gt;</code> when not natively supported. Similarly, CSS3 properties that aren't supported will simply not appear. Responsive layouts controlled by height and width
 				media queries are simply not applied. </p>
@@ -130,116 +95,50 @@
 				</strong></p>
 			<p>The resources section below includes a few libraries to help normalise HTML5 and CSS3 functionality across a range of older browsers.</p>
 		</div>
-		<h2 id="javascriptSection">JavaScript</h2>
+	<h2 id="javascriptSection">JavaScript</h2>
 		<div id="javascriptWhitespace" class="entry">
 			<h3>Whitespacing &amp; Formatting</h3>
 			<p>Unless you're willing to completely format a whole document, respect and maintain the formatting of an existing document.</p>
 			<h4>Character Spacing</h4>
-			<pre class="prettyprint">
-// Bad
-if(blah==="foo"){
-	foo("bar");
-}
-
-// Good 
-if(blah === "foo"){
-	foo("bar");
-}</pre>
+			<pre class="prettyprint">// Bad</br>if(blah==="foo"){</br>&#9;foo("bar");</br>}</br></br>// Good </br>if(blah === "foo"){</br>&#9;foo("bar");</br>}</pre>
 			<h4>Always Use Braces</h4>
-			<pre class="prettyprint">
-// Bad
-if(foo)
-	bar();
-
-// Good
-if(foo){
-	bar();
-}</pre>
+			<pre class="prettyprint">// Bad</br>if(foo)</br>&#9;bar();</br></br>// Good</br>if(foo){</br>&#9;bar();</br>}</pre>
 			<h4>Single and double quotes</h4>
 			<p>Strings should always use double quotes. Single quotes should be used for html properties inside of these strings</p>
-			<pre class="prettyprint">
-$string .= &quot;&lt;a href=&#39;https://www.example.com&#39; target=&#39;_blank&#39;&gt;Link&lt;/a&gt;&quot;;</pre>
+			<pre class="prettyprint">$string .= &quot;&lt;a href=&#39;https://www.example.com&#39; target=&#39;_blank&#39;&gt;Link&lt;/a&gt;&quot;;</pre>
 		</div>
 		<div id="javascriptCommenting" class="entry">
 			<h3>Commenting</h3>
 			<p>Commenting provides a learning experience for developers new to an internal tool. Commenting on software going into prodcution however is typically not required unless complexities that can't be shown via naming convention or trivial code samples.</p>
-			<pre class="prettyprint">
-if(user.hasPermission){
-	editPage();
-}</pre>
+			<pre class="prettyprint">if(user.hasPermission){</br>&#9;editPage();</br>}</pre>
 			<p>Commenting, in this scenario at least, is completely unnecessary.</p>
 			<p>Consider a complicated regular expression, or a math function calculating angles or switching between degrees and radians.
 				Without the comment above, beginner and intermediate readers will be fairly clueless to the scripts' meaning.</p>
-			<pre class="prettyprint">
-// RegEx for validating US phone numbers, can be (XXX) XXX-XXXX (with or without dashes, spaces or brackets)
-var phoneRegEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;</pre>
+			<pre class="prettyprint">// RegEx for validating US phone numbers, can be (XXX) XXX-XXXX (with or without dashes, spaces or brackets)</br>var phoneRegEx = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;</pre>
 		</div>
 		<div id="javascriptComparison" class="entry">
 			<h3>Always Use === Comparison</h3>
 			<p>The use of the == equality operator allows for frustrating bugs to slip through almost undetected. It allows for weak typing that is best explained by <a href="http://bonsaiden.github.com/JavaScript-Garden/#types.equality" target="_blank">JavaScript Garden</a>.</p>
-			<pre class="prettyprint">
-var zeroAsAString = "0";
-
-if (zeroAsAString == 0) {
-	// this code gets to run
-}
-
-if (zeroAsAString === 0) {
-	// this code doesn't
-}</pre>
+			<pre class="prettyprint">var zeroAsAString = "0";</br></br>if (zeroAsAString == 0) {</br>&#9;// this code gets to run</br>}</br></br>if (zeroAsAString === 0) {</br>&#9;// this code doesn't</br>}</pre>
 		</div>
 		<div id="javascriptGlobalNamespace" class="entry">
 			<h3>Avoid Polluting the Global Namespace</h3>
 
 			<p>Globals are generally used to store application-wide settings: it's generally better to namespace your project or settings as objects.</p>
-			<pre class="prettyprint">
-// polluted global name space
-var settingA = true;
-var settingB = false;
-var settingC = "test";
-
-// a settings namespace
-var app_settings = {
-	settingA: true,
-	settingB: false,
-	settingC: "test"
-}</pre>
+			<pre class="prettyprint">// polluted global name space</br>var settingA = true;</br>var settingB = false;</br>var settingC = "test";</br></br>// a settings namespace</br>var app_settings = {</br>&#9;settingA: true,</br>&#9;settingB: false,</br>&#9;settingC: "test"</br>}</pre>
 			<p>Namespace your globals to your own specific app name to reduce the chance for conflicts.</p>
-			<pre class="prettyprint">
-var myAppName = {
-	settings: {
-		settingA: true
-	}
-}
-
-//accessed as
-myAppName.settings.settingA; // true</pre>
+			<pre class="prettyprint">var myAppName = {</br>&#9;settings: {</br>&#9;&#9;settingA: true</br>&#9;}</br>}</br></br>//accessed as</br>myAppName.settings.settingA; // true</pre>
 		</div>
 		<div id="javascriptCamelCase" class="entry">
 			<h3>Camel Case Variables</h3>
 			<p>The camel casing (or <em>camelCasing</em>) of JavaScript variables is accepted as the standard in most coding environments.
 				The only exception that was raised in the comment section is the use of uppercase and underscores to denote contants.</p>
-			<pre class="prettyprint">
-var X_Position = obj.scrollLeft;
-
-var xPosition = obj.scrollLeft; // tidier
-
-SCENE_GRAVITY = 1; // constant</pre>
-
+			<pre class="prettyprint">var X_Position = obj.scrollLeft;</br></br>var xPosition = obj.scrollLeft; // tidier</br></br>SCENE_GRAVITY = 1; // constant</pre>
 		</div>
 		<div id="javascriptLoopCacheArrayLength" class="entry">
 			<h3>Loop Performance - Cache Array Length</h3>
 			<p>Looping is arguably the most important part of JavaScript performance to get right. Shave a millisecond or two off inside of a loop, potentially gain seconds overall. One such way is to cache the length of an array so it doesnt have to be calculated every time the loop is iterated through.</p>
-			<pre class="prettyprint">
-var toLoop = new Array(1000);
-
-for (var i = 0; i &lt; toLoop.length; i++) {
-	// BAD - the length has to be evaluated 1000 times
-}
-
-for (var i = 0, len = toLoop.length; i &lt; len; i++) {
-	// GOOD - the length is only looked up once and then cached
-}</pre>
+			<pre class="prettyprint">var toLoop = new Array(1000);</br></br>for (var i = 0; i &lt; toLoop.length; i++) {</br>&#9;// BAD - the length has to be evaluated 1000 times</br>}</br></br>for (var i = 0, len = toLoop.length; i &lt; len; i++) {</br>&#9;// GOOD - the length is only looked up once and then cached</br>}</pre>
 			<h4>The Exception</h4>
 			<p>If you're looping through an array to find and remove a particular item, this will alter the array length. Any time you change the array length by either adding or removing items from inside the loop, you will get yourself into trouble. Consider either re-setting the length or avoid caching it for this particular situation.</p>
 		</div>
@@ -248,54 +147,22 @@ for (var i = 0, len = toLoop.length; i &lt; len; i++) {
 			<p>The ability to step over and out of loops is really useful in avoiding costly loop cycles.</p>
 			<p>If you're looking for something inside of a loop, what do you do once you find it? Say the condition you're looking for is matched halfway through a 1000 item loop.
 				Do you execute whatever you intend to do, and allow the loop to continue to iterate over the remaining 500 items, knowing that there's no chance it will hit an if statement? Nope! You break out of your loop, literally!</p>
-			<pre class="prettyprint">
-var bigArray = new Array(1000);
-
-for (var i = 0, len = bigArray.length; i &lt; len; i++) {
-	if (i === 500) {
-		break;
-	}
-	console.log(i); // will only log out 0 - 499
-}</pre>
+			<pre class="prettyprint">var bigArray = new Array(1000);</br></br>for (var i = 0, len = bigArray.length; i &lt; len; i++) {</br>&#9;if (i === 500) {</br>&#9;&#9;break;</br>&#9;}</br>&#9;console.log(i); // will only log out 0 - 499</br>}</pre>
 			<p>Another problem is skipping over a particular iteration and then continuing on with the loop. While things like odds and evens are better managed by replacing <code>i++</code> with <code>i + 2</code>, 
 				some conditions need to be specifically listened for, to then trigger the skip. Anything that prevent's running through an entire iteration is pretty handy.</p>
-			<pre class="prettyprint">
-var bigArray = new Array(1000);
-
-for (var i = 0, len = bigArray.length; i &lt; len; i++) {
-	if (condition) {
-		continue;
-	}
-	doCostlyStuff();
-}</pre>
+			<pre class="prettyprint">var bigArray = new Array(1000);</br></br>for (var i = 0, len = bigArray.length; i &lt; len; i++) {</br>&#9;if (condition) {</br>&#9;&#9;continue;</br>&#9;}</br>&#9;doCostlyStuff();</br>}</pre>
 		</div>
 		<div id="javascriptFunctionParameters" class="entry">
 			<h3>Don't Send Too Many Function Parameters</h3>
 			<p>This is a pretty bad idea, more for readability than anything:</p>
-			<pre class="prettyprint">
-function greet(name, language, age, gender, hairColour, eyeColour) {
-	alert(name);
-}</pre>
+			<pre class="prettyprint">function greet(name, language, age, gender, hairColour, eyeColour) {</br>&#9;alert(name);</br>}</pre>
 			<p>It's a much better idea to construct an object before-hand or to pass the object inline</p>
-			<pre class="prettyprint">
-function greet(user) {
-	alert(user.name);
-}
-
-greet({
-	name: "Bob",
-	gender: "male"
-});</pre>
+			<pre class="prettyprint">function greet(user) {</br>&#9;alert(user.name);</br>}</br></br>greet({</br>&#9;name: "Bob",</br>&#9;gender: "male"</br>});</pre>
 		</div>
 		<div id="javascriptBooleanNaming" class="entry">
 			<h3>Boolean variables</h3>
 			<p>Booleans should be easily identifiable by the way they are named. Use prefixes like <code>is</code>, <code>can</code> or <code>has</code> to propose a question.</p>
-			<pre class="prettyprint">
-isEditing = true;
-
-obj.canEdit = true;
-
-user.hasPermission = true;  </pre>
+			<pre class="prettyprint">isEditing = true;</br></br>obj.canEdit = true;</br></br>user.hasPermission = true;  </pre>
 		</div>
 		<div id="javascriptReflow" class="entry">
 			<h3>Minimising Repaints &amp; Reflows</h3>
@@ -303,54 +170,27 @@ user.hasPermission = true;  </pre>
 			<p>There is no doubt that both reflows and repaints should be avoided if possible, but how?</p>
 			<h4>A Reflow Example</h4>
 			<p>It's not that the following snippet is "bad code" exactly. But let's assume that the array <code>arr</code> has 10 items.</p>
-			<pre class="prettyprint">
-var myList = document.getElementById(&quot;myList&quot;);
-
-for (var i = 0, len = arr.length; i &lt; len; i++) {
-	
-	myList.innerHTML += &quot;&lt;li&gt;&quot; + arr[i].title + &quot;&lt;/li&gt;&quot;; //reflow - appending to element
-	
-}</pre>
+			<pre class="prettyprint">var myList = document.getElementById(&quot;myList&quot;);</br></br>for (var i = 0, len = arr.length; i &lt; len; i++) {</br>&#9;</br>&#9;myList.innerHTML += &quot;&lt;li&gt;&quot; + arr[i].title + &quot;&lt;/li&gt;&quot;; //reflow - appending to element</br>&#9;</br>}</pre>
 			<p>In the above <code>for</code> loop, a reflow will be triggered for every iteration of the loop. 10 iterations cause 10 reflows. </p>
 			<p>Now consider the following:</p>
-			<pre class="prettyprint">
-var constructedHTML = &quot;&quot;;
-
-for (var i = 0, len = arr.length; i &lt; len; i++) {
-	constructedHTML += &quot;&lt;li&gt;&quot; + arr[i].title + &quot;&lt;/li&gt;&quot;; //no reflow - appending to string
-}
-
-document.getElementById(&quot;myList&quot;).innerHTML = constructedHTML; //reflow</pre>
+			<pre class="prettyprint">var constructedHTML = &quot;&quot;;</br></br>for (var i = 0, len = arr.length; i &lt; len; i++) {</br>&#9;constructedHTML += &quot;&lt;li&gt;&quot; + arr[i].title + &quot;&lt;/li&gt;&quot;; //no reflow - appending to string</br>}</br></br>document.getElementById(&quot;myList&quot;).innerHTML = constructedHTML; //reflow</pre>
 			<p>In this scenario, the elements are being constructed within a string. Not a single reflow is created by the loop, as the DOM is not being altered. Only once the array has been completely looped through is the string then applied as the <code>innerHTML</code> of an object, causing the only reflow of the function.</p>
 		</div>
 		<div id="javascriptFeatureSniff" class="entry">
 			<h3>Modernizr</h3>
 			<p>Does the client's browser support geolocation? Does the client's browser support web workers? HTML5 video? HTML5 audio? The answer used to be:</p>
-			<pre class="prettyprint">
-if ($.browser.msie) {
-	// no it doesn't
-}</pre>
+			<pre class="prettyprint">if ($.browser.msie) {</br>&#9;// no it doesn't</br>}</pre>
 
 			<p>In steps <a href="http://www.modernizr.com" target="_blank">Modernizr</a>, a JavaScript library developed in part by industry dream-boat Paul Irish. 
 				With wide adoption, tiny file-size and plenty of <a href="http://www.modernizr.com/docs/#s1" target="_blank">documentation</a>: implementing it is a no-brainer. 
 				It creates a <code>Modernizr</code> object that contains the results of its detection tests, so checking feature support is as simple as the following:</p>
-			<pre class="prettyprint">
-// old way of detecting canvas support
-if (!!document.createElement('canvas').getContext) { ... }
-
-// with Modernizr
-if (Modernizr.canvas) { ... }</pre>
+			<pre class="prettyprint">// old way of detecting canvas support</br>if (!!document.createElement('canvas').getContext) { ... }</br></br>// with Modernizr</br>if (Modernizr.canvas) { ... }</pre>
 		</div>
-		<h2 id="jquerySection">jQuery Specific</h2>
+	<h2 id="jquerySection">jQuery Specific</h2>
 		<div id="jqueryChain" class="entry">
 			<h3>Chaining</h3>
 			<p>One of the best parts of jQuery is its function chaining. You've probably used it a bit, maybe a few simple calls one after another... but have you ever traversed the DOM like a mad dog? Take some time to familiarise yourself with the <a href="http://api.jquery.com/end/" target="_blank">.end()</a> function. It is critical for when you begin stepping up and down the DOM tree from your original selector.</p>
-			<pre class="prettyprint">
-$(".quote")
-	.hide()
-	.find("a").text("Click here").on("click",doStuff).end()
-	.parent().removeClass().addClass("testimonial").draggable().end()
-	.fadeIn("slow");</pre>
+			<pre class="prettyprint">$(".quote")</br>&#9;.hide()</br>&#9;.find("a").text("Click here").on("click",doStuff).end()</br>&#9;.parent().removeClass().addClass("testimonial").draggable().end()</br>&#9;.fadeIn("slow");</pre>
 			<p>In the example above, the <a href="http://api.jquery.com/end/" target="_blank">.end()</a> function is used once we have finished doing things with a particular DOM object and want to traverse
 			back up the DOM to the original object we called. We then load back up and dive back into the DOM.</p>
 		</div>
@@ -358,67 +198,26 @@ $(".quote")
 			<h3>Don't let jQuery do the work</h3>
 			<p>Where possible, let CSS do the work. For example, check out this button:</p>
 
-			<pre class="prettyprint">
-&lt;button class=&quot;quote&quot; href=&quot;#&quot;&gt;Click me&lt;/button&gt;
-&lt;div&gt;content and stuff&lt;/div&gt;</pre>
+			<pre class="prettyprint">&lt;button class=&quot;quote&quot; href=&quot;#&quot;&gt;Click me&lt;/button&gt;</br>&lt;div&gt;content and stuff&lt;/div&gt;</pre>
 			<p>Instead of hiding/showing elements via jQuery like this:</p>
-			<pre class="prettyprint">
-$(".quote").on("click", function(e){
-	$(this).next('div').toggle();
-});</pre>
+			<pre class="prettyprint">$(".quote").on("click", function(e){</br>&#9;$(this).next('div').toggle();</br>});</pre>
 			<p>Do this:</p>
-			<pre class="prettyprint">
-$(document).ready(function(){
-	$(".quote").addClass('closed');
-	$(".quote").on("click", function(e){
-		$(this).toggleClass('closed');
-	});
-});
-</pre>
-			<pre class="prettyprint lang-css">
-.quote + div{
-	display:block;
-}
-.quote.closed + div{
-	display:none;
-}</pre>
+			<pre class="prettyprint">$(document).ready(function(){</br>&#9;$(".quote").addClass('closed');</br>&#9;$(".quote").on("click", function(e){</br>&#9;&#9;$(this).toggleClass('closed');</br>&#9;});</br>});</pre>
+			<pre class="prettyprint lang-css">.quote + div{</br>&#9;display:block;</br>}</br>.quote.closed + div{</br>&#9;display:none;</br>}</pre>
 			<p>Also note that we're starting with the button visible and initially hiding it through javascript by adding the closed class. If we rely on javascript to make content accessible, we run into risks that the user will have javascript disabled, which leads to inaccessible content.</p>
 		</div>
-
 		<div id="jqueryOptimiseSelectors" class="entry">
 			<h3>Optimise Your Selectors</h3>
 			<p>One great way to improve performance is to reduce the number of queries you make to the DOM. This can be done by <em>caching the selector results</em> and <em>using efficient selectors</em>.</p>
 			<h4>Caching Selector Results</h4>
 			<p>Do a costly DOM query every time you want to change something, or store a reference to the element? Pretty clear choice.</p>
-			<pre class="prettyprint">
-// before
-$(".quote a").on("click", doStuff); // DOM query 1
-
-// now
-$(".quote a").addClass("quoteLink"); // DOM query 2
-
-// later
-$(".quote a").fadeIn("slow"); // DOM query 3</pre>
+			<pre class="prettyprint">// before</br>$(".quote a").on("click", doStuff); // DOM query 1</br></br>// now</br>$(".quote a").addClass("quoteLink"); // DOM query 2</br></br>// later</br>$(".quote a").fadeIn("slow"); // DOM query 3</pre>
 			<p>Ignoring chaining, this is better:</p>
-			<pre class="prettyprint">
-// before
-var $quoteLinks = $(".quote a");  // the only DOM query
-$quoteLinks.on("click", doStuff);
-
-// now
-$quoteLinks.addClass("quoteLink");
-
-// later
-$quoteLinks.fadeIn("slow");</pre>
+			<pre class="prettyprint">// before</br>var $quoteLinks = $(".quote a");  // the only DOM query</br>$quoteLinks.on("click", doStuff);</br></br>// now</br>$quoteLinks.addClass("quoteLink");</br></br>// later</br>$quoteLinks.fadeIn("slow");</pre>
 			<br />
 			<h4>Using Efficient Selectors</h4>
 			<p>So jQuery/sizzleJS can use CSS3 selectors like a boss, but what's the real cost? Behind the scenes the browser is hopefully using <code>document.querySelector()</code>, but there's also a fair chance it will be breaking down your selector string and querying the DOM manually.</p>
-			<pre class="prettyprint">
-// an ID search is the quickest possible query, then it just takes a list of the childNodes and matches the class
-$("#quoteList").children(".quotes"); 
-
-// looks for the "foo" class only in the pre-defined bar element
-$(".foo",bar); </pre>
+			<pre class="prettyprint">// an ID search is the quickest possible query, then it just takes a list of the childNodes and matches the class</br>$("#quoteList").children(".quotes"); </br></br>// looks for the "foo" class only in the pre-defined bar element</br>$(".foo",bar); </pre>
 		</div>
 		<div id="jqueryForEachLoops" class="entry">
 			<h3>A &lsquo;for&rsquo; Loop is Always Quicker Than a &lsquo;each()&rsquo; Loop</h3>
@@ -432,7 +231,7 @@ $(".foo",bar); </pre>
 				<li>Loops within loops</li>
 			</ul>
 		</div>
-		<h2 id="scssSection">SCSS</h2>
+	<h2 id="scssSection">SCSS</h2>
 		<div id="scssDefinition" class="entry">
 			<h3>What SCSS is</h3>
 			<p>SCSS gives us power to compartmentalize our styling rules so we can easily cut out unused sections, just by deleting a file. It also lets us condense static values into variables, giving us an easier path to maintenance or updates. Mixins can add extra functionality, giving us a way to add vendor prefixes or calculate values on the fly.</p>
@@ -440,80 +239,51 @@ $(".foo",bar); </pre>
 		</div>
 		<div id="scssProjectStructure" class="entry">
 			<h3>Project Structure</h3>
-			<p></p>
-		</div>
-		<div id="scssVariables" class="entry">
-			<h3>Variables</h3>
-		</div>
-		<div id="scssMixins" class="entry">
-			<h3>Mixins</h3>
+			<p>The directory structure is usually determined by creating a new <a href="http://compass-style.org/" target="_blank">Compass</a> project on the command line. The following image is an example of the compass project built into <a href="https://github.com/franchert/site_tool">Build-O-Tron</a>, the PHP authoring tool VisionPoint uses for front-end projects.</p>
+			<img style="display:block;position:relative;margin:auto;" src='includes/images/SASS.png'/>
+			<p>The base folder contains project mixins. The bootstrap folder is pulled directly from bootstrap source code, and contains the scss used within that project. The components folder contains a list of partials for each component used in the system. The custom folder acts as the counterpart to the bootstrap folder, if a custom front-end is required (no framework), this is where styles would be created. The variables folder contains... variables... such as colors, sizes and defaults.</p>
+			<p>All scss files shown (bootstrap.scss and custom.scss were added manually) are created by the <code>compass init</code>, and all files (including the manually created ones) compile into separate files within the stylesheets folder. Mixins, varaibles and partials are imported into each in the first few lines of the scss file.</p>
 		</div>
 		<div id="scssWhitespacing" class="entry">
 			<h3>Whitespacing</h3>
 			<h4>Proper Spacing</h4>
-			<p>each rule is on a new line and tabbed over once from its parent. Each child element of a rule</p>
-			<pre class="prettyprint lang-css">
-.selector {
-	display: block;
-	position:relative;
-	background: #ff0000;
-	color: #000000;
-	.child{
-		position:absolute;
-	}
-}</pre>
+			<p>Just like CSS, each rule is on a new line and tabbed over once from its parent. Unlike CSS, each child element of a rule is nested within it's parent and tabbed over an appropriate amount:</p>
+			<pre class="prettyprint lang-css">.parent {</br>&#9;display: block;</br>&#9;position:relative;</br>&#9;background: #ff0000;</br>&#9;color: #000000;</br>&#9;.child{</br>&#9;&#9;position:absolute;</br>&#9;&#9;.grandchild{</br>&#9;&#9;&#9;display:block;</br>&#9;&#9;}</br>&#9;}</br>}</pre>
 			<p>This will compile to the following CSS:</p>
-			<pre class="prettyprint lang-css">
-.selector {
-	display: block;
-	position:relative;
-	background: #ff0000;
-	color: #000000;
-}
-.selector .child{
-	position:absolute;
-}</pre>
+			<pre class="prettyprint lang-css">.parent {</br>&#9;display: block;</br>&#9;position:relative;</br>&#9;background: #ff0000;</br>&#9;color: #000000;</br>}</br>.parent .child{</br>&#9;position:absolute;</br>}</br>.parent .child .grandchild{</br>&#9;display:block;</br>}</pre>
+		</div>
+		<div id="scssVariables" class="entry">
+			<h3>Variables</h3>
+			<p>Just as mentioned above, variables typically contain static values used across the site, such as colors, sizes and default values. Values can also be set in relation to other variables and calculations can be done through the #{ } syntax.</p>
+			<pre class="prettyprint lang-scss">$blue:#00f;</br>$transparent_blue:rgba(0,0,255,0.3);</br>$dk:$transparent_blue; //compiles to rgba(0,0,255,0.3)</br></br>$tab:45em;</br>$desk:70em;</br>$desk_minus_tab:#{$desk - $tab}; // compiles to 35em</pre>
+			<p>If we use the <code>$blue</code> variable in a bunch of places, then need to make a slight change to the color, we can update it once in the location the variable is set then recompile. The new blue value will then be updated everywhere it's used.</p>
+		</div>
+		<div id="scssMixins" class="entry">
+			<h3>Mixins</h3>
+			<p>Mixins give us power to cut down on the repetitiveness of writing SCSS. </p>
+			<pre class="prettyprint lang-scss">@mixin font-size($sizeValue: 16,$spacing:6) {</br>&#9;font-size: $sizeValue + px;</br>&#9;font-size: ($sizeValue / 10) + rem;</br>&#9;line-height: ($sizeValue + $spacing) + px;</br>&#9;line-height: (($sizeValue + $spacing) / 10) + rem;</br>}</pre>
+			<p>This would be used in the following way:</p>
+			<pre class="prettyprint lang-scss">p{</br>&#9;@include font-size(18,2);</br>}</pre>
+			<p>This will compile to the following CSS:</p>
+			<pre class="prettyprint lang-css">p{</br>&#9;font-size:18px;</br>&#9;font-size:1.8rem;</br>&#9;line-height:20px;</br>&#9;line-height:2.0rem;</br>}</pre>
+			<p>Notice the graceful degradation from the rem unit to px. Mixins are also great for remembering all the fallbacks and vendor prefixes typically needed.</p>
+			<pre class="prettyprint lang-scss">@mixin calc($prop,$value,$fallback:100%){</br>&#9;#{$prop}:#{$fallback};</br>&#9;#{$prop}:-webkit-calc(#{$value});</br>&#9;#{$prop}:calc(#{$value});</br>}</pre>
+			<p>Usage:</p>
+			<pre class="prettyprint lang-scss">li{</br>&#9;@include calc('width','100% - 75px','170px');</br>}</pre>
+			<p>And output:</p>
+			<pre class="prettyprint lang-css">li{</br>&#9;width:170px;</br>&#9;width:-webkit-calc(100% - 75px);</br>&#9;width:calc(100% - 75px);</br>}</pre>
 		</div>
 		<div id="scssCommenting" class="entry">
 			<h3>Commenting Blocks</h3>
 			<p>Commenting within SCSS will help us determine what partial the source resides within so we can have an easier time finding it to make updates.</p>
-			<pre class="prettyprint lang-css">
-/* HORIZONTAL NAV */
-#horizNav {
-	width: 100%;
-	display: block;
-	ul {
-		display: none;
-		position: absolute;
-		top: 30;
-		left: 0;
-		li{
-			display: block;
-			float: left; 
-			position: relative;
-			a {
-				display: block;
-				height: 30px;
-				text-decoration: none;
-			}
-		}
-	}
-}</pre>
+			<pre class="prettyprint lang-css">/* HORIZONTAL NAV */</br>#horizNav {</br>&#9;width: 100%;</br>&#9;display: block;</br>&#9;ul {</br>&#9;&#9;display: none;</br>&#9;&#9;position: absolute;</br>&#9;&#9;top: 30;</br>&#9;&#9;left: 0;</br>&#9;&#9;li{</br>&#9;&#9;&#9;display: block;</br>&#9;&#9;&#9;float: left; </br>&#9;&#9;&#9;position: relative;</br>&#9;&#9;&#9;a {</br>&#9;&#9;&#9;&#9;display: block;</br>&#9;&#9;&#9;&#9;height: 30px;</br>&#9;&#9;&#9;&#9;text-decoration: none;</br>&#9;&#9;&#9;}</br>&#9;&#9;}</br>&#9;}</br>}</pre>
 		</div>
-		<h2 id="cssSection">CSS</h2>
+	<h2 id="cssSection">CSS</h2>
 		<div id="cssBoxModel" class="entry">
 			<h3>Understanding the Box Model is Key</h3>
 			<p>The "box model" is a key determining factor in how a browser renders your page. A healthy understanding of it's intricacies will make your job so indescribably easier. The box model denotes the way in which the physical dimensions of a HTML element are calculated. If a block element has a fixed width of say, 100px, then how should the padding, border and margin be placed?</p>
 			<p>Plenty of websites offer in depth descriptions, but put simply: the standards compliant implementation places the border and padding outside of the specified width. It's best explained with a graphic. Consider this code:</p>
-			<pre class="prettyprint lang-css">
-/* the old way (178 + 20 + 2 = 200) */
-.foo {
-	width: 150px;
-	height: 150px;
-	padding: 25px;
-	border: 25px solid;
-	margin: 20px;
-}</pre>
+			<pre class="prettyprint lang-css">/* the old way (178 + 20 + 2 = 200) */</br>.foo {</br>&#9;width: 150px;</br>&#9;height: 150px;</br>&#9;padding: 25px;</br>&#9;border: 25px solid;</br>&#9;margin: 20px;</br>}</pre>
 
 			<h4>What You Would Expect (Quirks Mode)</h4>
 			<p>The padding and border are calucated inward, preserving the height and width specifically set to be 150px.</p>
@@ -522,24 +292,8 @@ $(".foo",bar); </pre>
 			<p>Instead, you get 250px. 150px + (2 * 25) + (2 * 25).</p>
 			<p class="imageFeature"><img src="includes/images/box-model-standard.png" alt="Box Model - Standards Mode"></p>
 			<p>If you think it seems odd, you're not alone. There is a fix at hand, and it involves a CSS property called <code>box-sizing</code>, and it works in <strong>IE8 and above</strong>. It allows you to choose the exact way in which an elements dimensions are calculated, and its a lifesaver. Parameter support varies and vendor prefixes apply, so consult <a href="http://caniuse.com/css3-boxsizing" target="_blank">caniuse</a> for specifics.</p>
-			<pre class="prettyprint lang-css">
-/* the old way (178 + 20 + 2 = 200) */
-.foo {
-	width: 178px;
-	padding: 10px;
-	border: 1px;
-}
-
-/* a better way */
-.foo {
-	width: 200px;
-	padding: 10px;
-	border: 1px;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-}</pre>
-		<p>While it was always possible to mentally calculate widths by removing pixel units from each other (as per the first method), it was never entirely clear how to do so with variable width units like percentages and EMs. There was no other solution at this point besides wrapping elements in parent elements to ensure widths and <code>padding/margin/borders</code> could all be separate.</p>
+			<pre class="prettyprint lang-css">/* the old way (178 + 20 + 2 = 200) */</br>.foo {</br>&#9;width: 178px;</br>&#9;padding: 10px;</br>&#9;border: 1px;</br>}</br></br>/* a better way */</br>.foo {</br>&#9;width: 200px;</br>&#9;padding: 10px;</br>&#9;border: 1px;</br>&#9;&#9;-webkit-box-sizing: border-box;</br>&#9;&#9;-moz-box-sizing: border-box;</br>&#9;&#9;box-sizing: border-box;</br>}</pre>
+			<p>While it was always possible to mentally calculate widths by removing pixel units from each other (as per the first method), it was never entirely clear how to do so with variable width units like percentages and EMs. There was no other solution at this point besides wrapping elements in parent elements to ensure widths and <code>padding/margin/borders</code> could all be separate.</p>
 		</div>
 		<div id="cssFloatOrPosition" class="entry">
 			<h3>Know when to Float, and when to Position</h3>
@@ -554,57 +308,10 @@ $(".foo",bar); </pre>
 				<img src="includes/images/float-or-position.png" alt="How would go about coding up this image?"></p>
 			<p>Using <code>float</code>, you would need to wrap the items in a clearfix, float <code>.one</code> left, and fiddle with floats and margins on both <code>.two</code> and <code>.three</code>. You would end up with something similar to the following:</p>
 
-			<pre class="prettyprint lang-css">
-.parent {
-	/* ghetto clearfix */
-	width: 310px;
-	overflow: auto;
-}
-.one {
-	width: 200px;
-	height: 210px;
-	float: left;
-}
-.two {
-	width: 100px;
-	height: 100px;
-	float: right;
-	margin-bottom: 10px;
-}
-.three {
-	width: 100px;
-	height: 100px;
-	float: right;
-}</pre>
+			<pre class="prettyprint lang-css">.parent {</br>&#9;/* ghetto clearfix */</br>&#9;width: 310px;</br>&#9;overflow: auto;</br>}</br>.one {</br>&#9;width: 200px;</br>&#9;height: 210px;</br>&#9;float: left;</br>}</br>.two {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;float: right;</br>&#9;margin-bottom: 10px;</br>}</br>.three {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;float: right;</br>}</pre>
 			<p>Using <code>position</code> allows us to, as described earlier, paint the elements on the screen with x and y co-ordinates in a very explicit way. While the above method with floats will break long lines down the page, the below method will keep everything in place, regardless of content.</p>
 
-			<pre class="prettyprint lang-css">
-.parent {
-	position: relative;
-	width: 310px;
-	height: 210px;
-}
-.one, .two, .three {
-	position: absolute;
-}
-.one {
-	top: 0;
-	left: 0;
-	width: 200px;
-	height: 210px;
-}
-.two {
-	top: 0;
-	right: 0;
-	width: 100px;
-	height: 100px;
-}
-.three {
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	height: 100px;
-}</pre>
+			<pre class="prettyprint lang-css">.parent {</br>&#9;position: relative;</br>&#9;width: 310px;</br>&#9;height: 210px;</br>}</br>.one, .two, .three {</br>&#9;position: absolute;</br>}</br>.one {</br>&#9;top: 0;</br>&#9;left: 0;</br>&#9;width: 200px;</br>&#9;height: 210px;</br>}</br>.two {</br>&#9;top: 0;</br>&#9;right: 0;</br>&#9;width: 100px;</br>&#9;height: 100px;</br>}</br>.three {</br>&#9;bottom: 0;</br>&#9;right: 0;</br>&#9;width: 100px;</br>&#9;height: 100px;</br>}</pre>
 			<p>As mentioned earlier, there are <code>z-index</code> issues to be considered. While the above example might seem a bit excessive, once you start thinking with positions, it will opens a world of possibilities.</p>
 		</div>
 		<div id="cssShorthand" class="entry">
@@ -612,96 +319,45 @@ $(".foo",bar); </pre>
 			<h4>Grouping Properties</h4>
 			<p>Grouping properties together is one of the single most effective methods to greatly reduce the size of a CSS file. It's important to understand how properties are ordered (clockwise - top, right, bottom, left) 
 				and how they can be further shortened (top and bottom, left and right).</p>
-			<pre class="prettyprint lang-css">
-/* LONG CODE IS LONG */
-padding-top: 1px;
-padding-right: 2px;
-padding-bottom: 1px;
-padding-left: 2px;
-
-/* BETTER */
-padding: 1px 2px 1px 2px;
-
-/* BEST */
-padding: 1px 2px;</pre>
+			<pre class="prettyprint lang-css">/* LONG CODE IS LONG */</br>padding-top: 1px;</br>padding-right: 2px;</br>padding-bottom: 1px;</br>padding-left: 2px;</br></br>/* BETTER */</br>padding: 1px 2px 1px 2px;</br></br>/* BEST */</br>padding: 1px 2px;</pre>
 			<h4>From 0px to Hero</h4>
 			<p>Assigning a unit type to a property value of zero is redundant. It is not important to know whether an element should be <code>0px</code> from the left or <code>0 elephants</code> from the left, just that it's bang on the left.</p>
-			<pre class="prettyprint lang-css">
-/* BAD */
-padding: 0px 10px;</pre>
-			<pre class="prettyprint lang-css">
-/* GOOD */
-padding: 0 10px;</pre>
+			<pre class="prettyprint lang-css">/* BAD */</br>padding: 0px 10px;</pre>
+			<pre class="prettyprint lang-css">/* GOOD */</br>padding: 0 10px;</pre>
 		</div>
-
 		<div id="cssClearingFloats" class="entry">
 			<h3>Clearing Floats</h3>
 			<p>Clearing a <code>&lt;div&gt;</code> used to mean extra DOM, because it involved adding an extra clearer element. The better way is to set a specific width on the parent element ("auto" doesn't work in all browsers and scenarios) and an overflow value of either "auto" or "hidden". 
 				"Hidden" obviously degrades better, but there are some IE compatibility versions where "auto" works better.</p>
 			<h4>The HTML:</h4>
-			<pre class="prettyprint">
-&lt;div class=&quot;parentElement&quot;&gt;
-	&lt;div class=&quot;childElement&quot;&gt;
-		I'm floated left!
-	&lt;/div&gt;
-	I'm normal text that wraps around the float
-&lt;/div&gt;</pre>
+			<pre class="prettyprint">&lt;div class=&quot;parentElement&quot;&gt;</br>&#9;&lt;div class=&quot;childElement&quot;&gt;</br>&#9;&#9;I'm floated left!</br>&#9;&lt;/div&gt;</br>&#9;I'm normal text that wraps around the float</br>&lt;/div&gt;</pre>
 			<h4>The CSS:</h4>
-			<pre class="prettyprint lang-css">
-.parentElement {
-	width: 100%;
-	overflow: hidden;
-}
-.childElement {
-	float: left;
-}</pre>
+			<pre class="prettyprint lang-css">.parentElement {</br>&#9;width: 100%;</br>&#9;overflow: hidden;</br>}</br>.childElement {</br>&#9;float: left;</br>}</pre>
 			<p>Contributors have also brought the latest clearfix to my attention. The <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clear-fix</a>
 				is considered stable and cross browser compliant enough to make it to the latest HTML5 boiler plate release. I <strong>highly</strong> recommend you check it out. 
 				Although I am not a massive fan of browser-specific CSS and pseudo elements such as <code>:after</code>, the micro clearfix is definitely more robust. 
 				It also prevents top margins from collapsing which is an absolute life saver.</p>
-		</div>	  
+		</div>
 		<div id="cssCentering" class="entry">
 			<h3>Vertical &amp; Horizontal Centering</h3>
 			<p>Centering elements horizontally is not exactly rocket science, and I'm sure most of you are familiar with the following snippet:</p>
-			<pre class="prettyprint lang-css">
-.class {
-	width: 960px;
-	margin: 0 auto;
-}</pre>
+			<pre class="prettyprint lang-css">.class {</br>&#9;width: 960px;</br>&#9;margin: 0 auto;</br>}</pre>
 			<p>Front end devs have been using this snippet for a long time, without fully understanding why it didn't work vertically. From my understanding, it's important to remember that the parent element will generally have a <code>height: auto;</code> on it, and that there is no 100% height in which to vertically center the element. Applying the <code>position: absolute;</code> effectively moves the element out into position mode and responds to the pushing and pulling of auto margins and no specific location. </p>
-			<pre class="prettyprint lang-css">
-.exactMiddle {
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-}</pre>
+			<pre class="prettyprint lang-css">.exactMiddle {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;position: absolute;</br>&#9;top: 0;</br>&#9;right: 0;</br>&#9;bottom: 0;</br>&#9;left: 0;</br>&#9;margin: auto;</br>}</pre>
 			<p>The downsides of this method include its lack of support in IE6 and IE7, and the absence of a scroll bar if the browser is resized to be smaller than the centered object. There are more methods on <a href="http://blog.themeforest.net/tutorials/vertical-centering-with-css/" target="_blank">this page</a> (this is Method 4), but this is by far the best.</p> 
 			<p>The vertical centering of text in an element is also straightforward. If the text is on a single line, like a horizontal navigation item, you can set the <code>line-height</code> to be that of the element's physical height.</p> 
-			<pre class="prettyprint lang-css">
-#horizNav li {
-	height: 32px;
-	line-height: 32px;
-}</pre>
+			<pre class="prettyprint lang-css">#horizNav li {</br>&#9;height: 32px;</br>&#9;line-height: 32px;</br>}</pre>
 		</div>
-
 		<div id="cssImportant" class="entry">
 			<h3>You're Not !important</h3>
 			<p>A reliance upon the <code>!important</code> tag is a dangerous thing. The cases that warrant its use are rare and specific. They revolve around the necessity to override another stylesheet which you do not have access or permission to edit.
 				Another scenario is hard coding an element's styles to prevent inline JavaScript styles from taking precedence. Instead <code>!important</code> is used as a lazy shortcut to set the priority of your style over another, causing headaches further down the line.</p>
 			<p>The use of the <code>!important</code> tag can be mostly avoided via the better understanding of CSS selector precedence, and how to better target elements. The more specific the selector, the more likely it will be accepted as the applicable style.
 				The following example from vanseodesign demonstrates the specificity at work.</p>
-			<pre class="prettyprint lang-css">
-p { font-size: 12px; }
-p.bio { font-size: 14px; }</pre>
+			<pre class="prettyprint lang-css">p { font-size: 12px; }</br>p.bio { font-size: 14px; }</pre>
 			<p><a href="http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/" target="_blank">Their article</a> on style precedence does a better job explaining inheritence than I ever could, so please give it a go.</p>
 		</div>
-
-		<h2 id="cssHtmlSection">CSS3 &amp; HTML5</h2>
+	<h2 id="cssHtmlSection">CSS3 &amp; HTML5</h2>
 		<div id="cssHtmlFontFace" class="entry">
 			<h3>@font-face Use and Abuse</h3>
 			<p>Before you consider embedding a custom font, is important that you inspect the <abbr>EULA</abbr> and check if web embedding is allowed. Foundries are understandably reluctant to allow designers and developers
@@ -709,7 +365,7 @@ p.bio { font-size: 14px; }</pre>
 			<p>If, after careful consideration, you believe the desired font is web embeddable: head on over to the Font Squirrel <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank">@font-face Generator</a>. 
 				It utilises Fontspring's <a href="http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax" target="_blank">bulletproof @font-face structure</a> and automatically generates all the required file formats.</p>
 		</div>
-		<h2 id="resourcesSection">Resources</h2>
+	<h2 id="resourcesSection">Resources</h2>
 		<div id="resourcesSupport" class="entry">
 			<h3>Useful Resources</h3>
 			<p>The following resources are vital for the standardisation of code and interaction in a modern web page. They ensure that CSS3 and HTML5 features are made accessible across a range of browsers that previously lacked support.</p>
@@ -768,15 +424,12 @@ p.bio { font-size: 14px; }</pre>
 				</li>
 			</ul>
 		</div>
-	
 	</div>
-
 	<script src="includes/js/prettify.js"></script>
 	<script src="includes/js/lang-css.js"></script>
 	<script src="includes/js/jquery.min.js"></script>
 	<script src="includes/js/bootstrap-scrollspy.js"></script>
 	<script src="includes/js/jquery.scrollTo-min.js"></script>
 	<script src="includes/js/interact.js"></script>
-
 </body>
 </html>
