@@ -255,7 +255,7 @@
 		<div id="scssVariables" class="entry">
 			<h3>Variables</h3>
 			<p>Just as mentioned above, variables typically contain static values used across the site, such as colors, sizes and default values. Values can also be set in relation to other variables and calculations can be done through the #{ } syntax.</p>
-			<pre class="prettyprint lang-scss">$blue:#00f;</br>$transparent_blue:rgba(0,0,255,0.3);</br>$dk:$transparent_blue; //compiles to rgba(0,0,255,0.3)</br></br>$tab:45em;</br>$desk:70em;</br>$desk_minus_tab:#{$desk - $tab}; // compiles to 35em</pre>
+			<pre class="prettyprint lang-scss">$blue:#00f;</br>$transparent_blue:rgba(0,0,255,0.3);</br>$dk:$transparent_blue; //compiles to rgba(0,0,255,0.3)</br></br>$tab:45em;</br>$desk:70em;</br>$desk_minus_tab:#{$desk - $tab}; // compiles to 25em</pre>
 			<p>If we use the <code>$blue</code> variable in a bunch of places, then need to make a slight change to the color, we can update it once in the location the variable is set then recompile. The new blue value will then be updated everywhere it's used.</p>
 		</div>
 		<div id="scssMixins" class="entry">
