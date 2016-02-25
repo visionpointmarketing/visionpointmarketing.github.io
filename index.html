@@ -25,7 +25,6 @@
 					<li><a href="#jquerySection">jQuery</a></li>
 					<li><a href="#scssSection">SCSS</a></li>
 					<li><a href="#cssSection">CSS</a></li>
-					<li><a href="#cssHtmlSection">CSS3 &amp; HTML5</a></li>
 					<li><a href="#resourcesSection">Resources</a></li>
 				</ul>
 			</div>
@@ -63,7 +62,7 @@
 		</div>
 		<div id="accessibilityAnchors" class="entry">
 			<h3>Anchors</h3>
-			<p>Anchor tags provide a way to navigate on-page as well as between two pages. They shouldn't be used as clickable elements unless they actually take you somewhere else. A good way to determine whether to use an anchor or span is to imagine viewing the page with javascript turned off. How does the element behave?</p>
+			<p>Anchor tags provide a way to navigate on-page as well as between two pages. They shouldn't be used as clickable elements unless they can actually take you somewhere else. A good way to determine whether to use an anchor or span is to imagine viewing the page with javascript turned off. How does the element behave?</p>
 			<pre class="prettyprint">&lt;a href=&quot;#onpagenav&quot;&gt;&lt;/a&gt;</pre>
 		</div>
 		<div id="accessibilityAltText" class="entry">
@@ -79,33 +78,39 @@
 			<pre class="prettyprint">&lt;table cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; border=&#39;0&#39;&gt;</br>&#9;&lt;thead&gt;</br>&#9;&#9;&lt;tr&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&#9;&lt;th&gt;Cell Header&lt;/th&gt;</br>&#9;&#9;&lt;/tr&gt;</br>&#9;&lt;/thead&gt;</br>&#9;&lt;tbody&gt;</br>&#9;&#9;&lt;tr&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&#9;&lt;td&gt;Cell Item&lt;/td&gt;</br>&#9;&#9;&lt;/tr&gt;</br>&#9;&lt;/tbody&gt;</br>&lt;/table&gt;</pre>
 		</div>
 		<div id="accessibilityDegradation" class="entry">
-			<h3>Aggressive Degradation</h3>
-			<p>It's worth noting that this is a personal opinion, and best suited to very specific situations. The stance of aggressive degradation will not be well received in large commercial projects or enterprise solutions relying upon older browsers.</p>
-			<p>Aggressive degradation dictates that if a particular (older) browser cannot render a certain effect, it should simply be omitted. A CSS3 button is a good example. 
-				Effects such as <code>border-radius</code>, <code>box-shadow</code>, <code>text-shadow</code> and <code>gradients</code> will be displayed in cutting edge browsers.
-				A graceful fallback of a <code>.PNG</code> would be provided for slightly older browsers, and the most graceful of all solutions would include a PNG-Fix for IE6 or the use of <code>filter</code> arguments to replicate gradients and shadows.
-				However, aggressive degradation in this situation instructs you to neglect the older browsers and present them with a flat, satisfactory object.</p>
-			<p>Put simply, aggressive degradation boils down to: <strong>if your browser can't render a gradient or a box shadow, tough luck</strong>.</p>
-			<p>While not ideal for every situation, it ensures the timely delivery of projects and that the root product is still usable and not reliant on (validation breaking) hacks.</p>
-			<p>Thankfully browser handling of unsupported HTML5 and CSS3 is already that of a graceful nature. New additions to the list of <code>&lt;input /&gt;</code> types such as "email", "search" etc. will generally
-				degrade to normal <code>&lt;input type="text" /&gt;</code> when not natively supported. Similarly, CSS3 properties that aren't supported will simply not appear. Responsive layouts controlled by height and width
-				media queries are simply not applied. </p>
-			<p><strong>
-					Subtle CSS3 effects should be employed as a reward for users who run a modern browser.
-				</strong></p>
-			<p>The resources section below includes a few libraries to help normalise HTML5 and CSS3 functionality across a range of older browsers.</p>
+			<h3>Graceful Degradation and Progressive Enhancement</h3>
+			<p>Providing browser support for old browsers is difficult. All browsers supported require at least a block of time in order to thoroughly QA, and depending on designs and methods of implementation, could cause overruns in time and therefore cost. In order to combat this, the dangers and possible overruns need to be communicated to the client and decisions need to be made based on the ROI of this extra time spent. There are two strategies to communicate these changes.</p>
+			<h4>Graceful Degradation</h4>
+			<p><a target="_blank" href="http://caniuse.com/#feat=border-radius">Border radius</a> is a property that provides rounded corners on things like buttons. It works on all major modern browsers, but not in IE8. In order to provide rounded corners in IE8, the button background needs to <em>gracefully degrade</em> to a transparent png image in IE8. Graceful degradation is a great strategy for cases such as border radius , where the majority of users will get the modern version and only a handful won't.</p>
+			<h4>Progressive Enhancement</h4>
+			<p>Downloading a document when clicking a link is a task usually handled by the browser. Browsers know that certain file types should be downloaded rather than be rendered directly in the browser. Some file types are always rendered in the browser however (for example .html). All browsers except Safari and IE allow a <a target="_blank" href="http://caniuse.com/#feat=download">download attribute</a> on ahcnor links to force the link to attempt to download the resource, overriding the default browser behavior. This is an example of progressive enhancement, as users in safari and IE will still get the expected behavior of viewing the resource in the browser, but users with more modern browser functionality will get the better experience of downloading the resource directly.</p>
+			<h4>An example</h4>
+			<p>Browser X is the browser of choice of 2% of the client's user population. The client expects a total of 100 daily page views through all browsers, and expects the current site design to last 3 years. This equates to 2190 views over the life of the site through the eyes of browser X. In order to implement a specific feature in browser X, it may take $1000 of extra work. </p>
+			<p>If the feature is directly conversion reliant, and the typical conversion rate is 10%, then if conversions are worth more than $4.56, then it's worth it! What if the feature isn't conversion reliant? How much is it worth per user to give them rounded corners vs square corners on buttons?</p>
 		</div>
 	<h2 id="javascriptSection">JavaScript</h2>
 		<div id="javascriptWhitespace" class="entry">
 			<h3>Whitespacing &amp; Formatting</h3>
-			<p>Unless you're willing to completely format a whole document, respect and maintain the formatting of an existing document.</p>
+			<p>Unless you're willing to completely format a whole document, respect and maintain the formatting of an existing document. Here are some general tips when starting a new one.</p>
 			<h4>Character Spacing</h4>
 			<pre class="prettyprint">// Bad</br>if(blah==="foo"){</br>&#9;foo("bar");</br>}</br></br>// Good </br>if(blah === "foo"){</br>&#9;foo("bar");</br>}</pre>
 			<h4>Always Use Braces</h4>
 			<pre class="prettyprint">// Bad</br>if(foo)</br>&#9;bar();</br></br>// Good</br>if(foo){</br>&#9;bar();</br>}</pre>
 			<h4>Single and double quotes</h4>
-			<p>Strings should always use double quotes. Single quotes should be used for html properties inside of these strings</p>
-			<pre class="prettyprint">$string .= &quot;&lt;a href=&#39;https://www.example.com&#39; target=&#39;_blank&#39;&gt;Link&lt;/a&gt;&quot;;</pre>
+			<p>Strings should always use double quotes. Single quotes should be used when quotes are needed inside of these strings</p>
+			<pre class="prettyprint">$string = &quot;&lt;a href=&#39;https://www.example.com&#39; target=&#39;_blank&#39;&gt;Link&lt;/a&gt;&quot;;</pre>
+		<div id="javascriptInteraction" class="entry">
+			<h3>Build for all possibilities</h3>
+			<p>Be aware of how your function interacts with all the scenarios a user could throw at it.</p>
+			<ul>
+				<li>Should you call it within document ready?</li> 
+				<li>Does it need a reflow on screen resize?</li> 
+				<li>Does it change when the user scrolls down the page?</li> 
+				<li>Are you binding any events? What happens when other events have already been fired?</li>
+				<li>Are you making calculations based on the DOM? What if the DOM has been altered?</li>
+				<li>Are you taking into account a tab/keyboard navigation?</li>
+				<li>What if javascript is turned off?</li>
+			</ul> 
 		</div>
 		<div id="javascriptCommenting" class="entry">
 			<h3>Commenting</h3>
@@ -195,7 +200,7 @@
 			back up the DOM to the original object we called. We then load back up and dive back into the DOM.</p>
 		</div>
 		<div id="jqueryWork" class="entry">
-			<h3>Don't let jQuery do the work</h3>
+			<h3>Don't make jQuery do the work</h3>
 			<p>Where possible, let CSS do the work. For example, check out this button:</p>
 
 			<pre class="prettyprint">&lt;button class=&quot;quote&quot; href=&quot;#&quot;&gt;Click me&lt;/button&gt;</br>&lt;div&gt;content and stuff&lt;/div&gt;</pre>
@@ -279,64 +284,17 @@
 			<pre class="prettyprint lang-css">/* HORIZONTAL NAV */</br>#horizNav {</br>&#9;width: 100%;</br>&#9;display: block;</br>&#9;ul {</br>&#9;&#9;display: none;</br>&#9;&#9;position: absolute;</br>&#9;&#9;top: 30;</br>&#9;&#9;left: 0;</br>&#9;&#9;li{</br>&#9;&#9;&#9;display: block;</br>&#9;&#9;&#9;float: left; </br>&#9;&#9;&#9;position: relative;</br>&#9;&#9;&#9;a {</br>&#9;&#9;&#9;&#9;display: block;</br>&#9;&#9;&#9;&#9;height: 30px;</br>&#9;&#9;&#9;&#9;text-decoration: none;</br>&#9;&#9;&#9;}</br>&#9;&#9;}</br>&#9;}</br>}</pre>
 		</div>
 	<h2 id="cssSection">CSS</h2>
-		<div id="cssBoxModel" class="entry">
-			<h3>Understanding the Box Model is Key</h3>
-			<p>The "box model" is a key determining factor in how a browser renders your page. A healthy understanding of it's intricacies will make your job so indescribably easier. The box model denotes the way in which the physical dimensions of a HTML element are calculated. If a block element has a fixed width of say, 100px, then how should the padding, border and margin be placed?</p>
-			<p>Plenty of websites offer in depth descriptions, but put simply: the standards compliant implementation places the border and padding outside of the specified width. It's best explained with a graphic. Consider this code:</p>
-			<pre class="prettyprint lang-css">/* the old way (178 + 20 + 2 = 200) */</br>.foo {</br>&#9;width: 150px;</br>&#9;height: 150px;</br>&#9;padding: 25px;</br>&#9;border: 25px solid;</br>&#9;margin: 20px;</br>}</pre>
-
-			<h4>What You Would Expect (Quirks Mode)</h4>
-			<p>The padding and border are calucated inward, preserving the height and width specifically set to be 150px.</p>
-			<p class="imageFeature"><img src="includes/images/box-model-quirks.png" alt="Box Model - Quirks Mode"></p>
-			<h4>What You Get (Standards Compliant Mode)</h4>
-			<p>Instead, you get 250px. 150px + (2 * 25) + (2 * 25).</p>
-			<p class="imageFeature"><img src="includes/images/box-model-standard.png" alt="Box Model - Standards Mode"></p>
-			<p>If you think it seems odd, you're not alone. There is a fix at hand, and it involves a CSS property called <code>box-sizing</code>, and it works in <strong>IE8 and above</strong>. It allows you to choose the exact way in which an elements dimensions are calculated, and its a lifesaver. Parameter support varies and vendor prefixes apply, so consult <a href="http://caniuse.com/css3-boxsizing" target="_blank">caniuse</a> for specifics.</p>
-			<pre class="prettyprint lang-css">/* the old way (178 + 20 + 2 = 200) */</br>.foo {</br>&#9;width: 178px;</br>&#9;padding: 10px;</br>&#9;border: 1px;</br>}</br></br>/* a better way */</br>.foo {</br>&#9;width: 200px;</br>&#9;padding: 10px;</br>&#9;border: 1px;</br>&#9;&#9;-webkit-box-sizing: border-box;</br>&#9;&#9;-moz-box-sizing: border-box;</br>&#9;&#9;box-sizing: border-box;</br>}</pre>
-			<p>While it was always possible to mentally calculate widths by removing pixel units from each other (as per the first method), it was never entirely clear how to do so with variable width units like percentages and EMs. There was no other solution at this point besides wrapping elements in parent elements to ensure widths and <code>padding/margin/borders</code> could all be separate.</p>
-		</div>
-		<div id="cssFloatOrPosition" class="entry">
-			<h3>Know when to Float, and when to Position</h3>
-			<p>Gone are the days of table based layouts. The moment we admit that we can concentrate our efforts into better understanding the way floats and positions work. There's a particular mental model that needs to be grasped, and I believe this is something best done with practise.</p>
-			<p>Floats are great for sucking elements out of the DOM and forcing them hard up against a left or a right edge. They became the bread and butter of the post table layout stage in front end dev, possibly because of the poor browser support of <code>display: inline</code> and <code>inline-block</code>, as well as <code>z-index</code> bugs stemming from position support. These days there really is no excuse. Inline-block is fairly well supported, and a quick hack will get it working in IE7.</p>
-			<p>The arguments that previously held back absolutely positioning elements with CSS have thankfully died down. In theory, positioning allows you to place elements on a page (or within any container for that matter) with Xs and Ys in a straightforward manner that should be familiar to people like Flash developers.</p>
-
-			<h4>Understanding Positions</h4>
-			<p>It's important to understand one fact when positioning elements with CSS: the position is always relative to the nearest positioned parent element. When people first start dabbling with CSS, there's a common misconception that <code>position: absolute;</code> positions right up to the page root. I think this stems from the fact that, yes, without any parent elements with position styles - this is true. It traverses up the DOM tree, not finding any positioned elements, and settles on the root of the page.</p>
-			<p>So if <code>position: absolute;</code> pulls elements out of their normal flow, how do you position an element relative to it's parent? That's straight forward. The parent element needs to by styled  <code>position: relative;</code>, and then all child elements will draw from the top, right, bottom and left of this parent container. Using this knowledge, how would you go about achieving the following straightforward layout?</p>
-			<p class="imageFeature">
-				<img src="includes/images/float-or-position.png" alt="How would go about coding up this image?"></p>
-			<p>Using <code>float</code>, you would need to wrap the items in a clearfix, float <code>.one</code> left, and fiddle with floats and margins on both <code>.two</code> and <code>.three</code>. You would end up with something similar to the following:</p>
-
-			<pre class="prettyprint lang-css">.parent {</br>&#9;/* ghetto clearfix */</br>&#9;width: 310px;</br>&#9;overflow: auto;</br>}</br>.one {</br>&#9;width: 200px;</br>&#9;height: 210px;</br>&#9;float: left;</br>}</br>.two {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;float: right;</br>&#9;margin-bottom: 10px;</br>}</br>.three {</br>&#9;width: 100px;</br>&#9;height: 100px;</br>&#9;float: right;</br>}</pre>
-			<p>Using <code>position</code> allows us to, as described earlier, paint the elements on the screen with x and y co-ordinates in a very explicit way. While the above method with floats will break long lines down the page, the below method will keep everything in place, regardless of content.</p>
-
-			<pre class="prettyprint lang-css">.parent {</br>&#9;position: relative;</br>&#9;width: 310px;</br>&#9;height: 210px;</br>}</br>.one, .two, .three {</br>&#9;position: absolute;</br>}</br>.one {</br>&#9;top: 0;</br>&#9;left: 0;</br>&#9;width: 200px;</br>&#9;height: 210px;</br>}</br>.two {</br>&#9;top: 0;</br>&#9;right: 0;</br>&#9;width: 100px;</br>&#9;height: 100px;</br>}</br>.three {</br>&#9;bottom: 0;</br>&#9;right: 0;</br>&#9;width: 100px;</br>&#9;height: 100px;</br>}</pre>
-			<p>As mentioned earlier, there are <code>z-index</code> issues to be considered. While the above example might seem a bit excessive, once you start thinking with positions, it will opens a world of possibilities.</p>
-		</div>
 		<div id="cssShorthand" class="entry">
 			<h3>CSS Shorthand</h3>
 			<h4>Grouping Properties</h4>
 			<p>Grouping properties together is one of the single most effective methods to greatly reduce the size of a CSS file. It's important to understand how properties are ordered (clockwise - top, right, bottom, left) 
 				and how they can be further shortened (top and bottom, left and right).</p>
-			<pre class="prettyprint lang-css">/* LONG CODE IS LONG */</br>padding-top: 1px;</br>padding-right: 2px;</br>padding-bottom: 1px;</br>padding-left: 2px;</br></br>/* BETTER */</br>padding: 1px 2px 1px 2px;</br></br>/* BEST */</br>padding: 1px 2px;</pre>
-			<h4>From 0px to Hero</h4>
-			<p>Assigning a unit type to a property value of zero is redundant. It is not important to know whether an element should be <code>0px</code> from the left or <code>0 elephants</code> from the left, just that it's bang on the left.</p>
-			<pre class="prettyprint lang-css">/* BAD */</br>padding: 0px 10px;</pre>
-			<pre class="prettyprint lang-css">/* GOOD */</br>padding: 0 10px;</pre>
+			<pre class="prettyprint lang-css">padding-top: 1px;</br>padding-right: 2px;</br>padding-bottom: 1px;</br>padding-left: 2px;</br></br>/* BETTER */</br>padding: 1px 2px 1px 2px;</br></br>/* BEST */</br>padding: 1px 2px;</pre>
 		</div>
 		<div id="cssClearingFloats" class="entry">
 			<h3>Clearing Floats</h3>
-			<p>Clearing a <code>&lt;div&gt;</code> used to mean extra DOM, because it involved adding an extra clearer element. The better way is to set a specific width on the parent element ("auto" doesn't work in all browsers and scenarios) and an overflow value of either "auto" or "hidden". 
-				"Hidden" obviously degrades better, but there are some IE compatibility versions where "auto" works better.</p>
-			<h4>The HTML:</h4>
-			<pre class="prettyprint">&lt;div class=&quot;parentElement&quot;&gt;</br>&#9;&lt;div class=&quot;childElement&quot;&gt;</br>&#9;&#9;I'm floated left!</br>&#9;&lt;/div&gt;</br>&#9;I'm normal text that wraps around the float</br>&lt;/div&gt;</pre>
-			<h4>The CSS:</h4>
-			<pre class="prettyprint lang-css">.parentElement {</br>&#9;width: 100%;</br>&#9;overflow: hidden;</br>}</br>.childElement {</br>&#9;float: left;</br>}</pre>
-			<p>Contributors have also brought the latest clearfix to my attention. The <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clear-fix</a>
-				is considered stable and cross browser compliant enough to make it to the latest HTML5 boiler plate release. I <strong>highly</strong> recommend you check it out. 
-				Although I am not a massive fan of browser-specific CSS and pseudo elements such as <code>:after</code>, the micro clearfix is definitely more robust. 
-				It also prevents top margins from collapsing which is an absolute life saver.</p>
+			<p>Floating elements introduce several issues. I'd love to explain them here, but CSS Tricks has already <a href="https://css-tricks.com/all-about-floats/">done that</a>.</p>
+			<p>The <a href="http://nicolasgallagher.com/micro-clearfix-hack/" target="_blank">micro clear-fix</a> strategy is the best way.</p>
 		</div>
 		<div id="cssCentering" class="entry">
 			<h3>Vertical &amp; Horizontal Centering</h3>
@@ -349,24 +307,23 @@
 			<pre class="prettyprint lang-css">#horizNav li {</br>&#9;height: 32px;</br>&#9;line-height: 32px;</br>}</pre>
 			<p>If the text can wrap to multiple lines or line height is needed for another purpose, vertical alignment can be done by styling the centered elements with table and table-cell properties.</p>
 			<pre class="prettyprint lang-css">.parent{</br>&#9;display:table;</br>&#9;.child{</br>&#9;&#9;display:table-cell;</br>&#9;&#9;text-align:middle;</br>&#9;&#9;height:100px;</br>&#9;}</br>}</pre>
-			<p>Here is a <a target="_blank" href="http://codepen.io/franchert/pen/EKYadZ">codepen</a> further illustrating the idea</p>
+			<p>Here is a <a target="_blank" href="http://codepen.io/franchert/pen/EKYadZ">codepen</a> further illustrating the idea.</p>
 		</div>
-		<div id="cssImportant" class="entry">
-			<h3>You're Not !important</h3>
-			<p>A reliance upon the <code>!important</code> tag is a dangerous thing. The cases that warrant its use are rare and specific. They revolve around the necessity to override another stylesheet which you do not have access or permission to edit.
-				Another scenario is hard coding an element's styles to prevent inline JavaScript styles from taking precedence. Instead <code>!important</code> is used as a lazy shortcut to set the priority of your style over another, causing headaches further down the line.</p>
-			<p>The use of the <code>!important</code> tag can be mostly avoided via the better understanding of CSS selector precedence, and how to better target elements. The more specific the selector, the more likely it will be accepted as the applicable style.
-				The following example from vanseodesign demonstrates the specificity at work.</p>
-			<pre class="prettyprint lang-css">p { font-size: 12px; }</br>p.bio { font-size: 14px; }</pre>
-			<p><a href="http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/" target="_blank">Their article</a> on style precedence does a better job explaining inheritence than I ever could, so please give it a go.</p>
-		</div>
-	<h2 id="cssHtmlSection">CSS3 &amp; HTML5</h2>
-		<div id="cssHtmlFontFace" class="entry">
-			<h3>@font-face Use and Abuse</h3>
-			<p>Before you consider embedding a custom font, is important that you inspect the <abbr>EULA</abbr> and check if web embedding is allowed. Foundries are understandably reluctant to allow designers and developers
-				the ability to place font files directly on a server which can then be copied by a savvy end user. Particular foundries also prohibit the embedding of particular file types, such as <code>.TTF</code> and <code>.OTF</code>.</p>
-			<p>If, after careful consideration, you believe the desired font is web embeddable: head on over to the Font Squirrel <a href="http://www.fontsquirrel.com/fontface/generator" target="_blank">@font-face Generator</a>. 
-				It utilises Fontspring's <a href="http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax" target="_blank">bulletproof @font-face structure</a> and automatically generates all the required file formats.</p>
+		<div id="cssPrecedence" class="entry">
+			<h3>Precedence</h3>
+			<p>CSS precedence is tricky. Styles are Generally applied in the following order, overriding as they go down the list:</p>
+			<ol>
+				<li>general styling => <code>&nbsp;&nbsp;a{ z-index:1; }&nbsp;&nbsp;</code></li>
+				<li>specific styling => <code>&nbsp;&nbsp;a.button{ z-index:2; }&nbsp;&nbsp;</code></li>
+				<li>more specific styling => <code>&nbsp;&nbsp;.content a.button{ z-index:3; }&nbsp;&nbsp;</code></li>
+				<li>inline styling => <code>&nbsp;&nbsp;&lt;a href='#' style='z-index:4;'&gt;&lt;/a&gt;&nbsp;&nbsp;</code></li>
+				<li>!important => <code>&nbsp;&nbsp;a{ z-index:5!important; }&nbsp;&nbsp;</code></li>
+				<li>specific !important => <code>&nbsp;&nbsp;a.button{ z-index:6!important; }&nbsp;&nbsp;</code></li>
+				<li>more specific !important => <code>&nbsp;&nbsp;.content a.button{ z-index:7!important; }&nbsp;&nbsp;</code></li>
+			</ol>
+			<p>The <code>!important</code> tag is a dangerous thing. You can obviously add more and more specific rules to further and further bandaid elements. It's best practice to avoid using it wherever possible, however there are a few exceptions.</p>
+			<p>Source styling set by third-party libraries should typically be left alone. When possible, styles can be written to set a higher precedence, however this isn't always possible. Adding an !important tag keeps the source clean and ready to be upgraded.</p>
+			<p>Another reason to use !important is to override inline styling set by javascript for specific breakpoints. If we need to manually mess with the width and max/min width of elements in javascript, yet we always want these elements to be 100% width on mobile, adding an !important to achieve this can be easier and more performant than rewriting the javascript to handle that use case.</p>
 		</div>
 	<h2 id="resourcesSection">Resources</h2>
 		<div id="resourcesSupport" class="entry">
